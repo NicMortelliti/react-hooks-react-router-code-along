@@ -44,11 +44,28 @@ function NavBar() {
         }}
       >
         Login
-      </NavLink>      
+      </NavLink>
+      <NavLink
+        to="/signup"
+        exact
+        style={linkStyles}
+        activeStyle={{
+          background: "darkblue",
+        }}
+      >
+        Signup
+      </NavLink>
     </div>
   )
 }
 
+function Signup() {
+  return (
+    <div>
+      <h1>Signup!</h1>
+    </div>
+  )
+}
 
 function Home() {
   return (
@@ -88,6 +105,9 @@ function App() {
     <div>
       <NavBar />
       <Switch>
+        <Route path="/signup">
+          <Signup />
+        </Route>
         <Route path="/about">
           <About />
         </Route>
@@ -108,6 +128,9 @@ ReactDOM.render(
     <Switch>
       <Route exact path="/about">
         <About />
+      </Route>
+      <Route exact path="/signup">
+        <Signup />
       </Route>
       <Route exact path="/login">
         <Login />
