@@ -12,6 +12,44 @@ const linkStyles = {
   color: "white",
 }
 
+function NavBar() {
+  return (
+    <div>
+      <NavLink
+        to="/"
+        exact
+        style={linkStyles}
+        activeStyle={{
+        background: "darkblue",
+        }}
+      >
+        Home
+      </NavLink>
+      <NavLink
+        to="/about"
+        exact
+        style={linkStyles}
+        activeStyle={{
+          background: "darkblue",
+        }}
+      >
+        About
+      </NavLink>
+      <NavLink
+        to="/login"
+        exact
+        style={linkStyles}
+        activeStyle={{
+          background: "darkblue",
+        }}
+      >
+        Login
+      </NavLink>      
+    </div>
+  )
+}
+
+
 function Home() {
   return (
     <div>
@@ -48,21 +86,36 @@ function Login() {
 function App() {
   return (
     <div>
-      <Route exact path="/">
-        <Home />
-      </Route>
-      <Route path="/about">
+      <NavBar />
+      <Switch>
+        <Route path="/about">
           <About />
-      </Route>
-      <Route path="/login">
-          <Login /> 
-      </Route>
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
     </div>
-  )
+  );
 }
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <NavBar />
+    <Switch>
+      <Route exact path="/about">
+        <About />
+      </Route>
+      <Route exact path="/login">
+        <Login />
+      </Route>
+      <Route exact path="/">
+        <Home />
+      </Route>
+    </Switch>
   </BrowserRouter>,
-  document.getElementById("root"));
+  document.getElementById("root")
+);
