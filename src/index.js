@@ -37,9 +37,17 @@ function Login() {
 
 function App() {
   return (
-    <Route path="/">
-      <Home />
-    </Route>
+    <div>
+      <Route path="/">
+        <Home />
+      </Route>
+      <Route path="/about">
+          <About />
+      </Route>
+      <Route path="/login">
+          <Login /> 
+      </Route>
+    </div>
   )
 }
 
